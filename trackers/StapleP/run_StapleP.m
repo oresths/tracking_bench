@@ -1,4 +1,4 @@
-function results = run_Staple(seq, res_path, bSaveImage)
+function results = run_StapleP(seq, res_path, bSaveImage)
 % Entry point for the Wu - CVPR2013 benchmark
 
     %% Read params.txt

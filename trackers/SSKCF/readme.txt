@@ -1,0 +1,5 @@
+- binary: SumShiftKCF.exe
+- OS: Ms windows 7, 64bit
+- compiler: Visual Studio 2013 32bit
+- library: opencv3.1 (statically linked)
+- the binary can be run within the vot_toolkit environment
