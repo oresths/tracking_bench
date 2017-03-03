@@ -22,6 +22,6 @@ temp_res = dlmread('output.txt');
 results.res = [ temp_res(:,[1 2]) temp_res(:,5)-temp_res(:,1) temp_res(:,6)-temp_res(:,2) ];
 
 results.type='rect';
-results.fps=seq.len/duration;
+results.fps=seq.len / duration;
 
 disp(results.fps)
