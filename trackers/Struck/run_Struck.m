@@ -21,6 +21,6 @@ results.res = dlmread('log.txt');
 results.res(:,1:2) =results.res(:,1:2) + 1;%c to matlab
 
 results.type='rect';
-results.fps=seq.len / duration;
+results.fps = seq.len / duration;
 
 disp(results.fps)

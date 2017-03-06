@@ -156,6 +156,8 @@ for idxSeq=1:length(seqs)
                 end
             catch err
                 disp('error');
+                disp(err.identifier)
+                disp(err.message)
                 rmpath(genpath('./'))
                 cd('../../');
                 res=[];

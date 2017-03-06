@@ -1,0 +1,24 @@
+% Load default settings
+cfg = default_parameters_dat();
+
+% Tracking
+frames = seq.startFrame:seq.endFrame;
+times = zeros(size(frames));
+for frame = frames
+  I = imread(seq.s_frames);
+  
+  ttrack = tic;
+  if frame == 1
+    [state, location] = tracker_dat_initialize(I, seq.init_rect, cfg); 
+  else
+    [state, location] = tracker_dat_update(state, I, cfg);
+  end
+  times(frame) = toc(ttrack);
+  
+%   % Visualization
+%   figure(1), clf
+%   imshow(I)
+%   rectangle('Position', location, 'EdgeColor', 'b', 'LineWidth', 2);
+%   drawnow
+end
+fprintf('Tracked %d frames in %.2f sec (%.2f fps)\n', length(frames), sum(times), 1/mean(times));
