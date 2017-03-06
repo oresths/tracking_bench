@@ -5,8 +5,8 @@
 function compile()
 
 % set the values
-opts.opencv_include_path    =   'C:\opencv\build\include'; % OpenCV include path
-opts.opencv_lib_path        =   'C:\opencv\build\x64\vc12\lib'; % OpenCV lib path
+opts.opencv_include_path    =   'C:\Users\oz16265\Workspace\opencv\include'; % OpenCV include path
+opts.opencv_lib_path        =   'C:\Users\oz16265\Workspace\opencv\x64\vc12\lib'; % OpenCV lib path
 opts.clean                  =   false; % clean mode
 opts.dryrun                 =   false; % dry run mode
 opts.verbose                =   1; % output verbosity
