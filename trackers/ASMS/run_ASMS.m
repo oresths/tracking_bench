@@ -12,13 +12,14 @@ fprintf(fid,'%s,',seq.s_frames{rows, 1:end-1});
 fprintf(fid,'%s\n',seq.s_frames{rows, end});
 fclose(fid);
 
-tic
+% tic
 tracker_command = '.\asms_vot.exe';
 dos(tracker_command);
-duration=toc;
+% duration=toc;
 
 results.res = dlmread('output.txt');
 results.type='rect';
-results.fps=seq.len / duration;
+% results.fps = seq.len / duration;
+results.fps = dlmread('fps.txt');
 
 disp(results.fps)
