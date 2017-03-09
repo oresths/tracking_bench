@@ -26,8 +26,11 @@ AUC=[];
 fontSize = 16;
 fontSizeLegend = 10;
 
-figure1 = figure;
+perfMatPath = '.\perfMat\overall\';
+dataName=[perfMatPath 'fps_all' num2str(numTrk) '.mat'];
+load(dataName);
 
+figure1 = figure;
 axes1 = axes('Parent',figure1,'FontSize',14);
 for idxTrk=indexSort(1:rankNum)
 
@@ -45,7 +48,7 @@ for idxTrk=indexSort(1:rankNum)
             tmp=sprintf('%.3f', score);
     end    
     
-    tmpName{i} = [nameTrkAll{idxTrk} ' [' tmp ']'];
+    tmpName{i} = [nameTrkAll{idxTrk} ' [' tmp '] - ' num2str(fps_all(idxTrk)) 'fps'];
     h(i) = plot(thresholdSet,bb,'color',plotDrawStyle{i}.color, 'lineStyle', plotDrawStyle{i}.lineStyle,'lineWidth', 4,'Parent',axes1);
     hold on
     i=i+1;

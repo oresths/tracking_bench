@@ -160,6 +160,7 @@ for i=1:length(metricTypeSet)
         % genPerfMat to generate the file.
         if ~exist(dataName)
             genPerfMat(seqs, trackers, evalType, nameTrkAll, perfMatPath);
+            genFpsMat(seqs, trackers, evalType, nameTrkAll, perfMatPath);
         end        
         
         load(dataName);
