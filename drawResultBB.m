@@ -112,8 +112,9 @@ for index_seq=1:length(seqs)
                     disp('The type of output is not supported!')
                     continue;
             end
-        end        
+        end
         imwrite(frame2im(getframe(gcf)), [pathSave  num2str(i) '.png']);
+        drawnow
     end
     clf
 end
