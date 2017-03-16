@@ -72,7 +72,7 @@ for index_seq=1:length(seqs)
         mkdir(pathSave);
     end
     
-    for i=10:seq_length
+    for i=1:seq_length
         image_no = seq.startFrame + (i-1);
         id = sprintf(nz,image_no);
         fileName = strcat(seq.path,id,'.',seq.ext);
@@ -90,7 +90,8 @@ for index_seq=1:length(seqs)
             
             switch resultsAll{j}.type
                 case 'rect'
-                    rectangle('Position', resultsAll{j}.res(i,:), 'EdgeColor', plotDrawStyle{j}.color, 'LineWidth', LineWidth,'LineStyle',LineStyle);
+                    h = rectangle('Position', resultsAll{j}.res(i,:), 'EdgeColor', plotDrawStyle{j}.color, 'LineWidth', LineWidth,'LineStyle',LineStyle);
+                    l(j) =line(nan,nan,'LineWidth', LineWidth, 'Color',get(h,'edgecolor'),'LineStyle',LineStyle);
                 case 'ivtAff'
                     drawbox(resultsAll{j}.tmplsize, resultsAll{j}.res(i,:), 'Color', plotDrawStyle{j}.color, 'LineWidth', LineWidth,'LineStyle',LineStyle);
                 case 'L1Aff'
@@ -113,7 +114,10 @@ for index_seq=1:length(seqs)
                     continue;
             end
         end
-        imwrite(frame2im(getframe(gcf)), [pathSave  num2str(i) '.png']);
+        
+        legend(l, trackerNames)
+        
+        imwrite(frame2im(getframe(gcf)), [pathSave  num2str(i) '.jpg']);
         drawnow
     end
     clf
