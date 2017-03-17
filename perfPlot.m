@@ -176,28 +176,28 @@ for i=1:length(metricTypeSet)
         % draw and save the overall performance plot
         plotDrawSave(numTrk,plotDrawStyle,aveSuccessRatePlot,idxSeqSet,rankNum,rankingType,rankIdx,nameTrkAll,thresholdSet,titleName, xLabelName,yLabelName,figName,metricType);
         
-        % draw and save the performance plot for each attribute
-        attTrld = 0;
-        for attIdx=1:attNum
-            
-            idxSeqSet=find(att(:,attIdx)>attTrld);
-            
-            if length(idxSeqSet) < 2
-                continue;
-            end
-            disp([attName{attIdx} ' ' num2str(length(idxSeqSet))])
-            
-            figName=[figPath attFigName{attIdx} '_'  plotType '_' rankingType];
-            titleName = ['Plots of ' evalType ': ' attName{attIdx} ' (' num2str(length(idxSeqSet)) ')'];
-            
-            switch metricType
-                case 'overlap'
-                    titleName = ['Success plots of ' evalType ' - ' attName{attIdx} ' (' num2str(length(idxSeqSet)) ')'];
-                case 'error'
-                    titleName = ['Precision plots of ' evalType ' - ' attName{attIdx} ' (' num2str(length(idxSeqSet)) ')'];
-            end
-            
-            plotDrawSave(numTrk,plotDrawStyle,aveSuccessRatePlot,idxSeqSet,rankNum,rankingType,rankIdx,nameTrkAll,thresholdSet,titleName, xLabelName,yLabelName,figName,metricType);
-        end        
+%         % draw and save the performance plot for each attribute
+%         attTrld = 0;
+%         for attIdx=1:attNum
+%             
+%             idxSeqSet=find(att(:,attIdx)>attTrld);
+%             
+%             if length(idxSeqSet) < 2
+%                 continue;
+%             end
+%             disp([attName{attIdx} ' ' num2str(length(idxSeqSet))])
+%             
+%             figName=[figPath attFigName{attIdx} '_'  plotType '_' rankingType];
+%             titleName = ['Plots of ' evalType ': ' attName{attIdx} ' (' num2str(length(idxSeqSet)) ')'];
+%             
+%             switch metricType
+%                 case 'overlap'
+%                     titleName = ['Success plots of ' evalType ' - ' attName{attIdx} ' (' num2str(length(idxSeqSet)) ')'];
+%                 case 'error'
+%                     titleName = ['Precision plots of ' evalType ' - ' attName{attIdx} ' (' num2str(length(idxSeqSet)) ')'];
+%             end
+%             
+%             plotDrawSave(numTrk,plotDrawStyle,aveSuccessRatePlot,idxSeqSet,rankNum,rankingType,rankIdx,nameTrkAll,thresholdSet,titleName, xLabelName,yLabelName,figName,metricType);
+%         end        
     end
 end

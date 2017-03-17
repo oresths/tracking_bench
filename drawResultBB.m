@@ -84,7 +84,7 @@ for index_seq=1:length(seqs)
         text(10, 15, ['#' id], 'Color','y', 'FontWeight','bold', 'FontSize',24);
         
         for j=1:length(trks)
-            disp(trks{j}.name)            
+%             disp(trks{j}.name)            
            
             LineStyle = plotDrawStyle{j}.lineStyle;
             
@@ -117,6 +117,7 @@ for index_seq=1:length(seqs)
         
         legend(l, trackerNames)
         
+        disp([seq.name ': ' num2str(i) ' / ' num2str(seq_length)])
         imwrite(frame2im(getframe(gcf)), [pathSave  num2str(i) '.jpg']);
         drawnow
     end

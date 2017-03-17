@@ -1,5 +1,9 @@
 function genPerfMat(seqs, trackers, evalType, nameTrkAll, perfMatPath)
 
+if strcmp(evalType, 'OPE')
+    [X, Y] = timeLost(seqs, trackers);
+end
+
 pathAnno = './anno/';
 numTrk = length(trackers);
 
@@ -86,7 +90,7 @@ for idxSeq=1:length(seqs)
             [aveCoverage, aveErrCenter, errCoverage, errCenter] = calcSeqErrRobust(res, anno);
             
             for tIdx=1:length(thresholdSetOverlap)
-                successNumOverlap(idx,tIdx) = sum(errCoverage >thresholdSetOverlap(tIdx));
+                successNumOverlap(idx,tIdx) = sum(errCoverage > thresholdSetOverlap(tIdx));
             end
             
             for tIdx=1:length(thresholdSetError)
