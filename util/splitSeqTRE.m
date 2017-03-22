@@ -19,7 +19,7 @@ Idx = Idx(find(Idx>0));
 for i=1:length(Idx)
     r = rect_anno(Idx(i),:);
     
-    if r(1)<=0 | r(2)<=0 | r(3)<=0 | r(4)<=0 | isnan(sum(r))
+    if r(1)<0 | r(2)<0 | r(3)<0 | r(4)<0 | isnan(sum(r)) | (r(1)<=0 & r(2)<=0 & r(3)<=0 & r(4)<=0)
         Idx(i) = 0;
     end
 end
