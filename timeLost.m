@@ -9,6 +9,9 @@ numTrk = length(trackers);
 
 rpAll=['.\results\results_OPE\'];
 
+real_time_fps = 25;
+duration = zeros(length(seqs),1);
+
 successOverlap = zeros(length(thresholdSetOverlap), length(trackers), length(seqs));
 aveSuccessOverlap = zeros(length(thresholdSetOverlap), length(trackers));
 seqNames = cell(length(seqs),1);
@@ -20,6 +23,11 @@ for idxSeq=1:length(seqs)
     
     rect_anno = dlmread([pathAnno s.name '.txt']);
     anno = rect_anno;
+    
+    len = size(anno,1);
+    
+    duration(idxSeq) = len / 25;
+    
     nameAll=[];
     for idxTrk=1:numTrk
         
@@ -31,8 +39,6 @@ for idxSeq=1:length(seqs)
 %         disp([s.name ' ' t.name]);
         
         res = results{1};
-        
-        len = size(anno,1);
         
         if isempty(res)
             break;
@@ -51,13 +57,13 @@ for idxSeq=1:length(seqs)
         for tIdx=1:length(thresholdSetOverlap)
             firstLost = find(errCoverage <= thresholdSetOverlap(tIdx),1,'first');
             if isempty(firstLost)
-                successOverlap(tIdx, idxTrk, idxSeq) = 1;
+                successOverlap(tIdx, idxTrk, idxSeq) = len;
             else
-                successOverlap(tIdx, idxTrk, idxSeq) = firstLost / len;
+                successOverlap(tIdx, idxTrk, idxSeq) = firstLost;
             end
         end
     end    
-    aveSuccessOverlap = aveSuccessOverlap + successOverlap(:, :, idxSeq);   
+    aveSuccessOverlap = aveSuccessOverlap + successOverlap(:, :, idxSeq) / len;   
 end
 
 aveSuccessOverlap = aveSuccessOverlap / length(seqs);
@@ -69,9 +75,9 @@ for i=1:length(seqs) + 1
 %         surf(1:length(trackers), thresholdSetOverlap, aveSuccessOverlap)
         title('Average Duration of overlap')
     else
-        imagesc(successOverlap(:,:,i))
+        imagesc(successOverlap(:,:,i) / real_time_fps)
 %         surf(1:length(trackers), thresholdSetOverlap, successOverlap(:,:,i))
-        title(['Duration of overlap for  - ' seqNames{i}])
+        title(['Duration of overlap for  - ' seqNames{i} ' (' int2str(duration(i)) 's)'])
     end
     set(gca, 'ydir', 'normal')
 %     set(gca, 'ydir', 'reverse')
