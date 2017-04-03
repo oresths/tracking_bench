@@ -6,13 +6,13 @@ function results=run_FDSST(seq, res_path, bSaveImage, parameters)
 % base_path = 'sequences/';
 
 %parameters according to the paper
-params.padding = 2.0;                   % extra area surrounding the target
+params.padding = 1.0;       %2.0            % extra area surrounding the target
 params.output_sigma_factor = 1/16;		% standard deviation for the desired translation filter output
 params.scale_sigma_factor = 1/16;       % standard deviation for the desired scale filter output
 params.lambda = 1e-2;					% regularization weight (denoted "lambda" in the paper)
-params.interp_factor = 0.025;			% tracking model learning rate (denoted "eta" in the paper)
-params.num_compressed_dim = 18;         % the dimensionality of the compressed features
-params.refinement_iterations = 1;       % number of iterations used to refine the resulting position in a frame
+params.interp_factor = 0.012;	%0.025;		% tracking model learning rate (denoted "eta" in the paper)
+params.num_compressed_dim = 18; %18        % the dimensionality of the compressed features
+params.refinement_iterations = 3;%1;       % number of iterations used to refine the resulting position in a frame
 params.translation_model_max_area = inf;% maximum area of the translation model
 params.interpolate_response = 1;        % interpolation method for the translation scores
 params.resize_factor = 1;               % initial resize

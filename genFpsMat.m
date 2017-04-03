@@ -1,4 +1,5 @@
 function genFpsMat(seqs, trackers, evalType, nameTrkAll, perfMatPath)
+%Needed to print fps in the diagrams
 
 numTrk = length(trackers);
 numSeqs = length(seqs);
