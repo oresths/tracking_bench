@@ -1,3 +1,7 @@
+main_running
+delete perfMat\overall\ave*
+delete perfMat\overall\fps*
+
 clear
 close all;
 clc
