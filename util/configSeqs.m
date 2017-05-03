@@ -543,4 +543,4 @@ seqLong={...
     struct('name','row_long2','path','C:\Users\oz16265\Workspace\Work\row_long2\','startFrame',1,'endFrame',13368,'nz',6,'ext','jpg','init_rect', [0,0,0,0])
 };
 
-seqs = seqLong; %seqLong; seqMOUAV; %seqCVPRseqUAV123, seqUAV123_10fps, seqUAV20L, TC128, OTB100
+seqs = seqMOUAV; %seqLong; seqMOUAV; %seqCVPRseqUAV123, seqUAV123_10fps, seqUAV20L, TC128, OTB100
